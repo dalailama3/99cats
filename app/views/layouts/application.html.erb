@@ -1,8 +1,13 @@
+<% if logged_in? %>Welcome, <%= current_user.user_name.upcase %><% end %>
 <!DOCTYPE html>
+<% if !logged_in? %>
+  <%= button_to "Log in", new_session_url, class: "button", method: "get"  %> or
+  <%= button_to "Sign up", new_user_url, class: "button", method: "get" %>
+<% end %>
 <html>
 <head>
-  <title>Cats</title>
-  
+  <title>NinetyNineCats</title>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -10,4 +15,11 @@
 <%= yield %>
 
 </body>
+
+<% if logged_in? %>
+  <%= button_to "Log out", session_url, method: :delete %>
+
+<% end %>
+
+
 </html>
