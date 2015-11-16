@@ -8,9 +8,11 @@
   <label for="session_password_id">Password</label>
   <input type="text" name="user[password]" id="session_password_id">
 
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+
+
+
 <input type="submit" value="Log in!">
-
-
-
 
 </form>

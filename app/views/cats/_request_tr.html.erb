@@ -1,8 +1,9 @@
+<% is_cat_owner = current_user && current_user.owns_cat?(@cat) %>
 <tr>
   <td><%= request.start_date %></td>
   <td><%= request.end_date %></td>
   <td>
-    <% if request.pending? %>
+    <% if request.pending? && is_cat_owner %>
       <%= button_to "Approve", approve_cat_rental_request_url(request) %>
       <%= button_to "Deny", deny_cat_rental_request_url(request) %>
     <% else %>

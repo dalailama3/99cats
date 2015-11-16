@@ -5,11 +5,17 @@ class User < ActiveRecord::Base
     ensure_session_token!
   end
 
+  has_many :cats, foreign_key: :user_id
+  
+
   validates :user_name, presence: true, uniqueness: true
   validates :session_token, presence: true, uniqueness: true
   validates :password_digest, presence: true
   validates :password, length: { minimum: 6, allow_nil: true}
 
+  def owns_cat?(cat)
+    cat.user_id == self.id
+  end
 
 
   def ensure_session_token!

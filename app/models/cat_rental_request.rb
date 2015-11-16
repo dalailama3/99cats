@@ -6,6 +6,7 @@ class CatRentalRequest < ActiveRecord::Base
   validate :start_date_before_end_date
 
   belongs_to :cat
+  belongs_to :user
 
   def overlapping_requests
     CatRentalRequest
